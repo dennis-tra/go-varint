@@ -23,9 +23,9 @@ const (
 	MaxValueUvarint63 = (1 << 63) - 1
 )
 
-// UvarintSize returns the size (in bytes) of `num` encoded as a unsigned varint.
+// UvarintSize returns the size (in bytes) of `num` encoded as an unsigned varint.
 //
-// This may return a size greater than MaxUvarintLen63, which would be an
+// This may return a size greater than MaxLenUvarint63, which would be an
 // illegal value, and would be rejected by readers.
 func UvarintSize(num uint64) int {
 	bits := bits.Len64(num)
