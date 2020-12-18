@@ -40,7 +40,7 @@ func UvarintSize(num uint64) int {
 // ToUvarint converts an unsigned integer to a varint-encoded []byte
 func ToUvarint(num uint64) []byte {
 	buf := make([]byte, UvarintSize(num))
-	n := binary.PutUvarint(buf, uint64(num))
+	n := binary.PutUvarint(buf, num)
 	return buf[:n]
 }
 
