@@ -52,7 +52,7 @@ func FromUvarint(buf []byte) (uint64, int, error) {
 	var x uint64
 	var s uint
 	for i, b := range buf {
-		if (i == 8 && b >= 0x80) || i >= MaxLenUvarint63 {
+		if i == 8 {
 			// this is the 9th and last byte we're willing to read, but it
 			// signals there's more (1 in MSB).
 			// or this is the >= 10th byte, and for some reason we're still here.
@@ -87,7 +87,7 @@ func ReadUvarint(r io.ByteReader) (uint64, error) {
 			}
 			return 0, err
 		}
-		if (i == 8 && b >= 0x80) || i >= MaxLenUvarint63 {
+		if i == 8 {
 			// this is the 9th and last byte we're willing to read, but it
 			// signals there's more (1 in MSB).
 			// or this is the >= 10th byte, and for some reason we're still here.
